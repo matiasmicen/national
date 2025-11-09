@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfnational"
+		},
+		"inputFolder_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'inputFolder'"
+		},
+		"irisOutputfolder_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'irisOutputfolder'"
+		},
+		"trigger1Upload_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.Storage/storageAccounts/nationalmmsa"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfnational_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"inputFolder_connectionString": {
+						"value": "[parameters('inputFolder_connectionString')]"
+					},
+					"irisOutputfolder_connectionString": {
+						"value": "[parameters('irisOutputfolder_connectionString')]"
+					},
+					"trigger1Upload_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1Upload_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

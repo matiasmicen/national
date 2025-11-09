@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfnational"
+		},
+		"inputFolder_connectionString": {
+			"value": ""
+		},
+		"irisOutputfolder_connectionString": {
+			"value": ""
+		},
+		"trigger1Upload_properties_typeProperties_scope": {
+			"value": "/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.Storage/storageAccounts/nationalmmsa"
+		}
+	}
+}
