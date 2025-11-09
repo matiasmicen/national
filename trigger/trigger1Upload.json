@@ -1,0 +1,24 @@
+{
+	"name": "trigger1Upload",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "test_copy1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input/blobs/upload",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.Storage/storageAccounts/nationalmmsa",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

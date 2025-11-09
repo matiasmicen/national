@@ -1,0 +1,9 @@
+{
+	"name": "adfnational",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d8a6a5df-2954-4b86-8afd-6306aa571e3e",
+		"tenantId": "79e1cf7c-9e26-468d-81f6-ce6f3b9783dd"
+	}
+}
