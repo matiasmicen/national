@@ -5,11 +5,20 @@
 			"referenceName": "input_clone",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"destName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().destName",
+					"type": "Expression"
+				},
 				"container": "output"
 			}
 		}
