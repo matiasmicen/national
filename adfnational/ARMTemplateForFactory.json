@@ -204,7 +204,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"variableName": "filenameOutput",
-							"value": "iriscopy_cicd.csv"
+							"value": "iriscopy_cicd26.csv"
 						}
 					}
 				],
