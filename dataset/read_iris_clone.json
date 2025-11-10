@@ -1,0 +1,18 @@
+{
+	"name": "read_iris_clone",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "input_clone",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "iris_clone.csv",
+				"container": "input"
+			}
+		}
+	}
+}
