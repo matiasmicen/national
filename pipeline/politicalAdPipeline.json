@@ -50,8 +50,8 @@
 						]
 					},
 					"authentication": {
-						"resource": "https://management.azure.com/",
-						"type": "UserAssignedManagedIdentity"
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
 					}
 				}
 			}
