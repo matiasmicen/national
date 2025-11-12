@@ -67,6 +67,10 @@
 				"typeProperties": {
 					"url": "https://management.azure.com/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.App/jobs/political-ad-processor-job/start?api-version=2024-03-01",
 					"method": "POST",
+					"body": {
+						"value": "@json(\n    concat(\n        '{\"containers\": [{\"name\": \"political-ad-processor-job\",\"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\"command\": [\"poetry\"],\"args\": [\"run\",\"python\",\"main.py\",\"sent_from_queue2.xlsx\",\"',\n        string(activity('politicalAdWebHook').callBackUri), \n        '\"],\"env\": [{\"name\": \"AZURE_STORAGE_CONNECTION_STRING\",\"secretRef\": \"azure-storage-connection\"},{\"name\": \"GEMINI_API_KEY\",\"secretRef\": \"gemini-api-key\"},{\"name\": \"AZURE_STORAGE_KEY\",\"secretRef\": \"azure-storage-key\"}]}]}'\n    )\n)",
+						"type": "Expression"
+					},
 					"timeout": "00:10:00",
 					"reportStatusOnCallBack": true,
 					"authentication": {
