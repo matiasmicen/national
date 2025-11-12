@@ -54,6 +54,26 @@
 						"resource": "https://management.azure.com/"
 					}
 				}
+			},
+			{
+				"name": "politicalAdWebHook",
+				"type": "WebHook",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.App/jobs/political-ad-processor-job/start?api-version=2024-03-01",
+					"method": "POST",
+					"timeout": "00:10:00",
+					"reportStatusOnCallBack": true,
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
 			}
 		],
 		"annotations": []
