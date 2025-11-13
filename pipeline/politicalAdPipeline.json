@@ -43,7 +43,7 @@
 						"type": "Expression"
 					},
 					"timeout": "00:01:00",
-					"reportStatusOnCallBack": false,
+					"reportStatusOnCallBack": true,
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://management.azure.com/"
