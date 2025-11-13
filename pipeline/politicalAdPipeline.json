@@ -43,6 +43,7 @@
 						"type": "Expression"
 					},
 					"timeout": "00:01:00",
+					"reportStatusOnCallBack": true,
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://management.azure.com/"
@@ -56,7 +57,7 @@
 					{
 						"activity": "GetCallbackURL",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
