@@ -21,7 +21,7 @@
 				"type": "WebHook",
 				"dependsOn": [
 					{
-						"activity": "BuildfileName",
+						"activity": "Web1",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -43,7 +43,7 @@
 						"type": "Expression"
 					},
 					"timeout": "00:01:00",
-					"reportStatusOnCallBack": true,
+					"reportStatusOnCallBack": false,
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://management.azure.com/"
@@ -57,7 +57,7 @@
 					{
 						"activity": "GetCallbackURL",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -74,6 +74,38 @@
 					"url": "https://management.azure.com/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.App/jobs/political-ad-processor-job/start?api-version=2024-03-01",
 					"body": {
 						"value": "@json(concat('\n{ \"containers\": [\n    {\n      \"name\": \"political-ad-processor-job\",\n      \"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\n      \"command\": [\"poetry\"],\n      \"args\": [\n        \"run\",\n        \"python\",\n        \"main.py\",\n        \"', variables('fileName'), '\",\n        \"', activity('GetCallbackURL').output.webhookCallbackUri, '\"\n      ],\n      \"env\": [\n        {\"name\": \"AZURE_STORAGE_CONNECTION_STRING\", \"secretRef\": \"azure-storage-connection\"},\n        {\"name\": \"GEMINI_API_KEY\", \"secretRef\": \"gemini-api-key\"},\n        {\"name\": \"AZURE_STORAGE_KEY\", \"secretRef\": \"azure-storage-key\"}\n      ]\n    }\n  ]\n}\n'))",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "BuildfileName",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://political-ad-echo.proudmushroom-81708914.eastus.azurecontainerapps.io",
+					"body": {
+						"value": "@json('\n{ \n    \"containers\": [\n    {\n      \"name\": \"political-ad-processor-job\",\n      \"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\n      \"env\": [\n        { \"name\": \"MODE\", \"value\": \"echo\" },\n        { \"name\": \"PORT\", \"value\": \"8080\" },\n        { \"name\": \"AZURE_STORAGE_CONNECTION_STRING\", \"secretRef\": \"azure-storage-connection\" },\n        { \"name\": \"GEMINI_API_KEY\", \"secretRef\": \"gemini-api-key\" },\n        { \"name\": \"AZURE_STORAGE_KEY\", \"secretRef\": \"azure-storage-key\" }\n      ]\n    }\n  ]\n}\n')",
 						"type": "Expression"
 					},
 					"authentication": {
