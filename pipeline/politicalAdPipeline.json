@@ -33,7 +33,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://prod-17.northcentralus.logic.azure.com:443/workflows/38cbdc8ce790460e85f2dcb451f052b4/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=EocvqdQ5kCiaozKxPOmq0iNSOt_Af5yOmto4X0jD9RQ",
+					"url": "https://politicaladjob-dyfvdqcba0dydvbu.eastus-01.azurewebsites.net",
 					"method": "POST",
 					"body": {
 						"callBackUri": "https://prod-01.westus.datafactory.azure.net/pipelines/...",
