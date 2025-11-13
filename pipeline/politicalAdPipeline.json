@@ -33,7 +33,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://nat-media-poc-streamlit-app.wittycliff-3a85950e.eastus.azurecontainerapps.io",
+					"url": "https://political-ad-echo.proudmushroom-81708914.eastus.azurecontainerapps.io",
 					"method": "POST",
 					"headers": {
 						"Content-Type": "application/json"
@@ -57,7 +57,7 @@
 					{
 						"activity": "GetCallbackURL",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
