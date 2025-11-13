@@ -57,7 +57,7 @@
 					{
 						"activity": "GetCallbackURL",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
