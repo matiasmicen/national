@@ -9,7 +9,7 @@
 					{
 						"activity": "GetCallbackURL",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -64,7 +64,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://management.azure.com/subscriptions/dee7ac04-b4ba-4454-b71a-3cfc2fb97ed8/resourceGroups/nationalMM/providers/Microsoft.App/jobs/political-ad-processor-job/start?api-version=2024-03-01",
+					"url": "https://nat-media-poc-streamlit-app.wittycliff-3a85950e.eastus.azurecontainerapps.io",
 					"method": "POST",
 					"body": {
 						"value": "@json('\n{ \"containers\": [\n    {\n      \"name\": \"political-ad-processor-job\",\n      \"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\n      \"command\": [\"poetry\"],\n      \"args\": [\n        \"run\",\n        \"python\",\n        \"main.py\",\n        \"\",\n        \"https://your-webhook.com/complete\"\n      ],\n      \"env\": [\n        {\"name\": \"AZURE_STORAGE_CONNECTION_STRING\", \"secretRef\": \"azure-storage-connection\"},\n        {\"name\": \"GEMINI_API_KEY\", \"secretRef\": \"gemini-api-key\"},\n        {\"name\": \"AZURE_STORAGE_KEY\", \"secretRef\": \"azure-storage-key\"}\n      ]\n    }\n  ]\n}\n')",
