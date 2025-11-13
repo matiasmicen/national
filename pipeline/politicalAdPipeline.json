@@ -39,7 +39,7 @@
 						"value": "@json(concat(\n    '{\n        \"filename\":', variables('fileName'),\n    '}'\n))",
 						"type": "Expression"
 					},
-					"timeout": "00:01:30",
+					"timeout": "00:10:00",
 					"reportStatusOnCallBack": false
 				}
 			}
