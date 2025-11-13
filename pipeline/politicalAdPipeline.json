@@ -18,7 +18,7 @@
 						"Content-Type": "application/json"
 					},
 					"body": {
-						"value": "@json('{\n  \"containers\": [\n    {\n      \"name\": \"political-ad-processor-job\",\n      \"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\n      \"command\": [\"poetry\"],\n      \"args\": [\n        \"run\",\n        \"python\",\n        \"main.py\",\n        \"sent_from_queue2.xlsx\",\n        \"$$[CALLBACK_URI]\"\n      ],\n      \"env\": [\n        {\"name\": \"AZURE_STORAGE_CONNECTION_STRING\", \"secretRef\": \"azure-storage-connection\"},\n        {\"name\": \"GEMINI_API_KEY\", \"secretRef\": \"gemini-api-key\"},\n        {\"name\": \"AZURE_STORAGE_KEY\", \"secretRef\": \"azure-storage-key\"}\n      ]\n    }\n  ]\n}')",
+						"value": "@json('{\n  \"containers\": [\n    {\n      \"name\": \"political-ad-processor-job\",\n      \"image\": \"matiasmicen/nat-media-poc-streamlit-app:latest\",\n      \"command\": [\"poetry\"],\n      \"args\": [\n        \"run\",\n        \"python\",\n        \"main.py\",\n        \"sent_from_queue2.xlsx\",\n        \"$callbackUri\"\n      ],\n      \"env\": [\n        {\n          \"name\": \"AZURE_STORAGE_CONNECTION_STRING\",\n          \"secretRef\": \"azure-storage-connection\"\n        },\n        {\n          \"name\": \"GEMINI_API_KEY\",\n          \"secretRef\": \"gemini-api-key\"\n        },\n        {\n          \"name\": \"AZURE_STORAGE_KEY\",\n          \"secretRef\": \"azure-storage-key\"\n        },\n        {\n          \"name\": \"CALLBACK_URI\",\n          \"value\": \"$callbackUri\"\n        }\n      ]\n    }\n  ]\n}\n')",
 						"type": "Expression"
 					},
 					"timeout": "00:10:00",
